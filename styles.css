@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#container {
+    position: relative;
+    width: 100vw;
+    height: calc(100vw * (16 / 9)); /* Maintain a 9:16 aspect ratio */
+    max-height: 100vh; /* Prevent overflow on very tall screens */
+    background-color: white; /* Optional: Background for clarity */
+    overflow: hidden; /* Ensure nothing outside the container is visible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#balloonpaper {
+    position: absolute;
+    bottom: -100%; /* Start below the screen */
+    width: 70%; /* Adjust size as needed for mobile */
+    max-width: 300px; /* Prevent oversized images on larger screens */
+    animation: moveUp 8s forwards, pauseCenter 3s 3s forwards, burstUp 3s 6s forwards;
+}
+
+@keyframes moveUp {
+    0% {
+        transform: translateY(100%);
+    }
+    50% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes pauseCenter {
+    0%, 100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes burstUp {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-200%);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-300%);
+        opacity: 0;
+    }
+}
